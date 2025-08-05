@@ -1,0 +1,30 @@
+# The AI Assist Story
+Here is the story behind the birth of this script. Since this script is to assist the other project of mine, my target is to quickly export and import the database (this is very common when coming to development). Like this time, my team member wants its Augment code AI assists to work as expected (it runs npm build for every modifications it made, turns out due to the user right problem, it failed to build the project. I call it the "classic docker volume map user right problem"). So I plan to change my docker compose file from explicit volume map to named volume map.
+
+However, this needs to move the database data to another storage space, and I quickly think I should indeed write a script to do the export and import. But as I mentioned before, this script is not the main focus of my project, I decided to make it quick, but not to blindly put down a single sentence "I want bla bla bla...". AI is powerful, but only we use it in a proper manner.
+
+# The Prompt
+The core of a successful achievment from AI is prompt, a suitable prompt is the way to success, the more specific, more detailed you provided to AI assistant, the better coding results and completion you can get. Here is my prompt:
+
+```
+Help me write a script for easy exportation of the dedicated mongoDB database data for development usage for both windows and Linux version using mongodump. The script should 
+
+1) Export the results in a folder name "dbbackup-20250805132500-qos-bigmenu" where 20250825 should be the date of the export and 132500 should be the hour minute and second of the export time in timezone following the system. 
+
+2) The export directory should be within the same directory where the user run the script, if the directory does not exist, create for them using point 1's guideline. If there are user right problem, default to Desktop in both OS version. 
+
+3) The database login URI is "mongodb://db_username:db_password@192.168.1.10:27018/?authSource=admin". Since the username and the password is exposed here, please suggest a way to securely hide or obfuscate, e.g. using environment variable, and substitue it as variable in the login URL. 
+
+4) The script should also check whether this command is available first before running it, if not, end it with a message peacefully.
+```
+
+The trick for better results are "mention very basic what you want to achieve", e.g. "write a script for easy exportation of the dedicated mongoDB database data for development usage for both windows and Linux version using mongodump", this is general and broad, but enough to let AI understand the outline, the basic of what output it should be, and then "mention every single requirement you have". You kind of nail the details into several pieces, like I want the output naming format to be "dbbackup-20250805132500-qos-bigmenu", I want the export directory to be the same as the script directory, etc.
+
+This is not perfect, but it already provided a very good outcome. I am very happy with the result. The next step would be the importation. 
+
+# Roadmap
+1. Export mongoDB database script (done)
+2. Import mongoDB database script (on-going)
+3. Documentation (done)
+4. Testing (on-going)
+5. Security review (on-going)
